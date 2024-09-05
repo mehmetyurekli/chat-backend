@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Component
 public class ReadMessageBean {
@@ -39,4 +41,5 @@ public class ReadMessageBean {
         Page<Message> messages = messageRepository.findAllByChatId(chatId, pageable);
         return new ResponseEntity<>(messages, HttpStatus.OK);
     }
+
 }

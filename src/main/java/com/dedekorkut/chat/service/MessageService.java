@@ -3,6 +3,7 @@ package com.dedekorkut.chat.service;
 import com.dedekorkut.chat.dto.CreateMessageDto;
 import com.dedekorkut.chat.entity.Message;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 public interface MessageService {
@@ -13,4 +14,5 @@ public interface MessageService {
 
     ResponseEntity<Page<Message>> findAllByChatId(int page, int size, String chatId);
 
+    HttpStatus updateReadAt(String chatId, String userId);
 }

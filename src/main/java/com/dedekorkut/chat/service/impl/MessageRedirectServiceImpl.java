@@ -2,6 +2,7 @@ package com.dedekorkut.chat.service.impl;
 
 import com.dedekorkut.chat.dto.CreateMessageDto;
 import com.dedekorkut.chat.entity.Chat;
+import com.dedekorkut.chat.entity.Message;
 import com.dedekorkut.chat.service.ChatService;
 import com.dedekorkut.chat.service.MessageRedirectService;
 import com.dedekorkut.chat.service.MessageService;
@@ -20,9 +21,10 @@ public class MessageRedirectServiceImpl implements MessageRedirectService {
     private final ChatService chatService;
 
     @Override
-    public void redirect(CreateMessageDto message) {
-        messageService.create(message);
+    public void redirect(CreateMessageDto messageDto) {
+        Message message = messageService.create(messageDto).getBody();
 
+        assert message != null;
         Chat chat = chatService.findById(message.getChatId()).getBody();
 
         if (chat != null) {

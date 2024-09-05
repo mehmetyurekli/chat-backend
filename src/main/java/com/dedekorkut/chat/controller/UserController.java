@@ -37,6 +37,11 @@ public class UserController {
         return userService.findUsernamesByIds(ids);
     }
 
+    @PostMapping("/findByUsername")
+    public ResponseEntity<User> findByUsername(@RequestParam String username){
+        return userService.findByUsername(username);
+    }
+
     @PostMapping
     public ResponseEntity<User> save(@RequestBody CreateUserDto createUserDto) {
         return userService.create(createUserDto);

@@ -57,5 +57,10 @@ public class UserServiceImpl implements UserService {
         return readUserBean.findUsernamesByIds(ids);
     }
 
+    @Override
+    public ResponseEntity<User> findByUsername(String username) {
+        return readUserBean.findByUsername(username);
+    }
+
 
 }

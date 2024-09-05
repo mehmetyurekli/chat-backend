@@ -5,6 +5,7 @@ import com.dedekorkut.chat.entity.Message;
 import com.dedekorkut.chat.service.MessageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,5 +30,10 @@ public class MessageController {
     @PostMapping
     public ResponseEntity<Message> save(@RequestBody CreateMessageDto createMessageDto) {
         return messageService.create(createMessageDto);
+    }
+
+    @PostMapping("/updateReadAt")
+    public HttpStatus updateReadAt(@RequestParam String chatId, @RequestParam String userId){
+        return messageService.updateReadAt(chatId, userId);
     }
 }

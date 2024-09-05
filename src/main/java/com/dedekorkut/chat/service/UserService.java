@@ -22,4 +22,6 @@ public interface UserService {
     ResponseEntity<String> findUsernameById(String id);
 
     ResponseEntity<Map<String, String>> findUsernamesByIds(String... ids);
+
+    ResponseEntity<User> findByUsername(String username);
 }
