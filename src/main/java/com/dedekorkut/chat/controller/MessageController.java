@@ -1,9 +1,12 @@
 package com.dedekorkut.chat.controller;
 
 import com.dedekorkut.chat.dto.CreateMessageDto;
+import com.dedekorkut.chat.dto.NotifyBulkReadDto;
+import com.dedekorkut.chat.dto.response.BulkReadDto;
 import com.dedekorkut.chat.entity.Message;
 import com.dedekorkut.chat.service.MessageService;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +36,7 @@ public class MessageController {
     }
 
     @PostMapping("/updateReadAt")
-    public HttpStatus updateReadAt(@RequestParam String chatId, @RequestParam String userId){
-        return messageService.updateReadAt(chatId, userId);
+    public ResponseEntity<BulkReadDto> updateReadAt(@RequestBody NotifyBulkReadDto notifyBulkReadDto){
+        return messageService.updateReadAtBulk(notifyBulkReadDto);
     }
 }

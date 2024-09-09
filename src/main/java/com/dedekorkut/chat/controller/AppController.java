@@ -1,6 +1,6 @@
 package com.dedekorkut.chat.controller;
 
-import com.dedekorkut.chat.dto.CreateMessageDto;
+import com.dedekorkut.chat.dto.Notification;
 import com.dedekorkut.chat.service.MessageRedirectService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -13,9 +13,9 @@ public class AppController {
 
     private final MessageRedirectService messageRedirectService;
 
-    @MessageMapping("/sendMessage")
-    public void handleMessage(@Payload CreateMessageDto message) {
-        messageRedirectService.redirect(message);
+    @MessageMapping("/sendNotification")
+    public void handleMessage(@Payload Notification notification) {
+        messageRedirectService.redirect(notification);
     }
 
 }
