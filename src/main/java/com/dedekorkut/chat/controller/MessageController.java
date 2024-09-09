@@ -6,9 +6,7 @@ import com.dedekorkut.chat.dto.response.BulkReadDto;
 import com.dedekorkut.chat.entity.Message;
 import com.dedekorkut.chat.service.MessageService;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,7 +34,7 @@ public class MessageController {
     }
 
     @PostMapping("/updateReadAt")
-    public ResponseEntity<BulkReadDto> updateReadAt(@RequestBody NotifyBulkReadDto notifyBulkReadDto){
+    public ResponseEntity<BulkReadDto> updateReadAt(@RequestBody NotifyBulkReadDto notifyBulkReadDto) {
         return messageService.updateReadAtBulk(notifyBulkReadDto);
     }
 }

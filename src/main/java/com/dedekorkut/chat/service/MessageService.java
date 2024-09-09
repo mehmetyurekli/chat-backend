@@ -1,13 +1,12 @@
 package com.dedekorkut.chat.service;
 
+import com.dedekorkut.chat.dto.CreateMessageDto;
 import com.dedekorkut.chat.dto.NotifyBulkReadDto;
 import com.dedekorkut.chat.dto.NotifyReadDto;
-import com.dedekorkut.chat.dto.CreateMessageDto;
 import com.dedekorkut.chat.dto.response.BulkReadDto;
 import com.dedekorkut.chat.dto.response.ReadDto;
 import com.dedekorkut.chat.entity.Message;
 import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 public interface MessageService {

@@ -85,7 +85,7 @@ public class MessageRedirectServiceImpl implements MessageRedirectService {
                         .and("readAt." + dto.getReadBy()).exists(false));
 
                 long count = mongoTemplate.count(query, "messages");
-                if(count == 0){ //if there are no unread messages.
+                if (count == 0) { //if there are no unread messages.
                     break;
                 }
                 BulkReadDto bulkReadDto = messageService.updateReadAtBulk(dto).getBody();

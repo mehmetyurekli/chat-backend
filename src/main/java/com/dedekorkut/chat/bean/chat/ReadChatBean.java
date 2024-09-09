@@ -37,7 +37,7 @@ public class ReadChatBean {
         return new ResponseEntity<>(chats, HttpStatus.OK);
     }
 
-    public ResponseEntity<Chat> findPrivateChat(String userId1, String userId2){
+    public ResponseEntity<Chat> findPrivateChat(String userId1, String userId2) {
         Optional<Chat> optionalChat = chatRepository.findPrivateChat(userId1, userId2);
         if (optionalChat.isEmpty()) {
             throw new WillfulException("Chat between " + userId1 + "-" + userId2 + " does not exist.");

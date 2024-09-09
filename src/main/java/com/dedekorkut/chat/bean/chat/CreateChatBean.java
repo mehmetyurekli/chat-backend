@@ -28,38 +28,38 @@ public class CreateChatBean {
             throw new WillfulException("Chat name can't be empty or null.");
         }
 
-        if(createChatDto.getMembers() == null || createChatDto.getMembers().isEmpty()){
+        if (createChatDto.getMembers() == null || createChatDto.getMembers().isEmpty()) {
             throw new WillfulException("Chat members can't be empty or null.");
         }
 
-        if(createChatDto.getChatType() == null){
+        if (createChatDto.getChatType() == null) {
             throw new WillfulException("Chat type can't be null.");
         }
 
-        if(createChatDto.getCreatedBy() == null ||createChatDto.getCreatedBy().isEmpty()){
+        if (createChatDto.getCreatedBy() == null || createChatDto.getCreatedBy().isEmpty()) {
             throw new WillfulException("Creator id can't be null or empty.");
         }
 
         boolean isCreatorAMember = false;
-        for(String id : createChatDto.getMembers()){
-            if(id.equals(createChatDto.getCreatedBy())){
+        for (String id : createChatDto.getMembers()) {
+            if (id.equals(createChatDto.getCreatedBy())) {
                 isCreatorAMember = true;
             }
             readUserBean.findById(id); //check if user ids are correct.
         }
-        if(!isCreatorAMember){
+        if (!isCreatorAMember) {
             readUserBean.findById(createChatDto.getCreatedBy());
             createChatDto.getMembers().add(createChatDto.getCreatedBy());
         }
 
-        if(createChatDto.getChatType() == ChatType.PRIVATE){
-            if(createChatDto.getMembers().size() != 2){
+        if (createChatDto.getChatType() == ChatType.PRIVATE) {
+            if (createChatDto.getMembers().size() != 2) {
                 throw new WillfulException("Private chat size must be 2.");
             }
             Optional<Chat> existingPrivateChat = chatRepository.findPrivateChat(
                     createChatDto.getMembers().get(0), createChatDto.getMembers().get(1));
 
-            if(existingPrivateChat.isPresent()){
+            if (existingPrivateChat.isPresent()) {
                 return new ResponseEntity<>(existingPrivateChat.get(), HttpStatus.CREATED);
             }
         }
@@ -71,10 +71,9 @@ public class CreateChatBean {
         saved.setMembers(createChatDto.getMembers());
 
         //set up default name for private chats. (id1-id2)
-        if(createChatDto.getChatType() == ChatType.PRIVATE){
+        if (createChatDto.getChatType() == ChatType.PRIVATE) {
             saved.setName(createChatDto.getMembers().get(0) + "-" + createChatDto.getMembers().get(1));
-        }
-        else{
+        } else {
             saved.setName(createChatDto.getName());
         }
 

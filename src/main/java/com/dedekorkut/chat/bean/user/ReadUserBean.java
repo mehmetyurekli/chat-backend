@@ -37,7 +37,7 @@ public class ReadUserBean {
         return userRepository.findByBlockedContains(userId);
     }
 
-    public ResponseEntity<User> findByUsername(String username){
+    public ResponseEntity<User> findByUsername(String username) {
         Optional<User> optionalUser = userRepository.findByUsername(username);
         if (optionalUser.isEmpty()) {
             throw new WillfulException("User with username " + username + " does not exist.");
@@ -47,14 +47,14 @@ public class ReadUserBean {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    public ResponseEntity<String> findUsernameById(String id){
+    public ResponseEntity<String> findUsernameById(String id) {
         User user = findById(id).getBody();
         return new ResponseEntity<>(user.getUsername(), HttpStatus.OK);
     }
 
     public ResponseEntity<Map<String, String>> findUsernamesByIds(String[] ids) {
         Map<String, String> map = new HashMap<>();
-        for(String id : ids){
+        for (String id : ids) {
             map.put(id, findById(id).getBody().getUsername());
         }
         return new ResponseEntity<>(map, HttpStatus.OK);

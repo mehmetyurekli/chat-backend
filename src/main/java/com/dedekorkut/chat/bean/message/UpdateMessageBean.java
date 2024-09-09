@@ -2,9 +2,9 @@ package com.dedekorkut.chat.bean.message;
 
 import com.dedekorkut.chat.bean.chat.ReadChatBean;
 import com.dedekorkut.chat.bean.user.ReadUserBean;
+import com.dedekorkut.chat.common.WillfulException;
 import com.dedekorkut.chat.dto.NotifyBulkReadDto;
 import com.dedekorkut.chat.dto.NotifyReadDto;
-import com.dedekorkut.chat.common.WillfulException;
 import com.dedekorkut.chat.dto.response.BulkReadDto;
 import com.dedekorkut.chat.dto.response.ReadDto;
 import com.dedekorkut.chat.entity.Chat;
@@ -42,8 +42,8 @@ public class UpdateMessageBean {
         readUserBean.findById(userId);
 
         assert chat != null;
-        if(!chat.getMembers().contains(userId)){
-           throw new WillfulException("User is not a member of the chat!");
+        if (!chat.getMembers().contains(userId)) {
+            throw new WillfulException("User is not a member of the chat!");
         }
 
         Update update = new Update();
@@ -63,13 +63,13 @@ public class UpdateMessageBean {
     }
 
     @Transactional
-    public ResponseEntity<ReadDto> updateReadAtSingle(NotifyReadDto msgRead){
+    public ResponseEntity<ReadDto> updateReadAtSingle(NotifyReadDto msgRead) {
         Chat chat = readChatBean.findByChatId(msgRead.getChatId()).getBody();
         readUserBean.findById(msgRead.getReadBy());
         readMessageBean.findById(msgRead.getMessageId()).getBody();
 
         assert chat != null;
-        if(!chat.getMembers().contains(msgRead.getReadBy())){
+        if (!chat.getMembers().contains(msgRead.getReadBy())) {
             throw new WillfulException("User is not a member of the chat!");
         }
 
@@ -78,7 +78,7 @@ public class UpdateMessageBean {
         update.set("readAt." + msgRead.getReadBy(), LocalDateTime.now());
 
         Query query = Query.query(Criteria.where("_id").is(msgRead.getMessageId())
-                        .and("from").ne(msgRead.getReadBy())
+                .and("from").ne(msgRead.getReadBy())
                 .and("readAt." + msgRead.getReadBy()).exists(false));
 
         mongoTemplate.updateMulti(query, update, Message.class);

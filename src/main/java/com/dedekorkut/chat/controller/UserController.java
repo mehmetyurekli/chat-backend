@@ -38,7 +38,7 @@ public class UserController {
     }
 
     @PostMapping("/findByUsername")
-    public ResponseEntity<User> findByUsername(@RequestParam String username){
+    public ResponseEntity<User> findByUsername(@RequestParam String username) {
         return userService.findByUsername(username);
     }
 

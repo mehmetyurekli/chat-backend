@@ -1,6 +1,5 @@
 package com.dedekorkut.chat.bean.message;
 
-import com.dedekorkut.chat.bean.chat.CreateChatBean;
 import com.dedekorkut.chat.bean.chat.ReadChatBean;
 import com.dedekorkut.chat.bean.user.ReadUserBean;
 import com.dedekorkut.chat.common.WillfulException;
