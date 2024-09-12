@@ -102,15 +102,20 @@ public class MessageRedirectServiceImpl implements MessageRedirectService {
                         messagingTemplate.convertAndSend("/queue/" + id, notification);
                     }
                 }
-//                Query query = Query.query(Criteria.where("chatId").is(bulkReadDto.getChatId())
-//                        .and("readAt." + bulkReadDto.getReadBy()).exists(false));
-//                long count = mongoTemplate.count(query, Message.class);
-//
-//                if (count > 0) {
-//
-//                }
+            }
 
+            case GROUP_CREATED -> {
+                String chatId = (String) notification.getBody();
+                Chat chat = chatService.findById(chatId).getBody();
 
+                if(chat != null) {
+                    notification.setType(NotificationType.ADDED_TO_GROUP);
+                    notification.setBody(chat);
+                    List<String> members = chat.getMembers();
+                    for (String id : members) {
+                        messagingTemplate.convertAndSend("/queue/" + id, notification);
+                    }
+                }
             }
         }
 

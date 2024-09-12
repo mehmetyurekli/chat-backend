@@ -10,7 +10,7 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://127.0.0.1:5500", "http://localhost:3000")  // Replace with your frontend origin
+                .allowedOrigins("https://dedekorkutchat.netlify.app", "https://main--dedekorkutchat.netlify.app", "http://localhost:3000", "217.131.99.83")  // Replace with your frontend origin
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
