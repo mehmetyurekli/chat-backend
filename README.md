@@ -66,3 +66,18 @@
 <ul>
   <li>Users are identified by their MongoDB ObjectIDs, and their username data is fetched on login to map ID to name in group chats and messages.</li>
 </ul>
+
+<h2>Screenshots</h2>
+<img width="1552" alt="Screen Shot 2024-09-12 at 22 29 38" src="https://github.com/user-attachments/assets/5d5be1b3-dea2-4d45-ad87-50efdb49bf47">
+
+<img width="1552" alt="Screen Shot 2024-09-12 at 22 30 21" src="https://github.com/user-attachments/assets/3ecfbe9f-3ee9-4dca-823f-413214c19c09">
+
+<img width="1552" alt="Screen Shot 2024-09-12 at 22 29 06" src="https://github.com/user-attachments/assets/04cb7a16-57e1-4729-8e70-af9faa8c2719">
+
+<img width="1552" alt="Screen Shot 2024-09-12 at 22 28 00" src="https://github.com/user-attachments/assets/da8c5c84-3cae-443b-8eee-6b2685d25e4a">
+
+<img width="1552" alt="Screen Shot 2024-09-12 at 22 28 16" src="https://github.com/user-attachments/assets/3c8c3e1a-79c5-4d46-bad7-3d9a1a35667f">
+
+<img width="1552" alt="Screen Shot 2024-09-12 at 22 28 40" src="https://github.com/user-attachments/assets/a0efc3a0-bc18-47dd-bdbc-b258704e0b22">
+
+This README file was created using ChatGPT.
